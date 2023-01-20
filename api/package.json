@@ -1,0 +1,23 @@
+{
+  "name": "ka-chow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saladriel/Ka-Chow.git"
+  },
+  "keywords": [],
+  "author": "@saladirel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saladriel/Ka-Chow/issues"
+  },
+  "homepage": "https://github.com/saladriel/Ka-Chow#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
