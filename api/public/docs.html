@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Ka-Chow API Documentation</title>
+    <script src="https://unpkg.com/@stoplight/elements@7.7.7/web-components.min.js"></script>
+    <style>
+      body {
+        height: 100vh;
+      }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements@7.7.7/styles.min.css" />
+  </head>
+  <body>
+    <elements-api apiDescriptionUrl="/openapi.json" router="hash" layout="sidebar" />
+    <script>
+      /**
+       * Large blobs of JSON ie `schemas/KaChow/properties/character` are extremely distracting inline.
+       * This hides the examples within the json schema viewer on any change in the body.
+       * Unfortunately Stoplight Elements markup makes it difficult (impossible?) to do this with pure CSS.
+       */
+      const observer = new MutationObserver(() => {
+        const selector = ".JsonSchemaViewer .sl-stack.sl-stack--horizontal.sl-stack--2";
+        document.querySelectorAll(selector).forEach((element) => {
+          if (element.textContent.startsWith("Example:")) {
+            element.style.display = "none";
+          }
+        });
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+  </body>
+</html>

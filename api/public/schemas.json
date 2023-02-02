@@ -1,0 +1,309 @@
+{
+  "$schema": "https://spec.openapis.org/oas/3.1/dialect/base",
+  "$defs": {
+    "Character": {
+      "title": "Character",
+      "description": "A character in the Cars movie series who says \"Ka-Chow\".",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "A unique identifier for the character.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "description": "The name of the character.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "actor": {
+          "description": "The name of the voice-actor for the character.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "imageUrl": {
+          "description": "A relative reference [[RFC3986, Section 4.2]](https://www.rfc-editor.org/rfc/rfc3986#section-4.2) to an image of the character.",
+          "type": "string",
+          "format": "uri-reference"
+        }
+      },
+      "required": ["id", "name", "actor", "imageUrl"],
+      "examples": [
+        {
+          "id": 1,
+          "name": "Lightning McQueen",
+          "actor": "Owen Wilson",
+          "imageUrl": "/images/mcqueen.jpg"
+        }
+      ]
+    },
+    "Movie": {
+      "title": "Movie",
+      "description": "A movie in the Cars series containing at least one Ka-Chow.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "A unique identifier for the movie.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "description": "The name of the movie.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "releaseDate": {
+          "description": "The U.S. release date of the movie.",
+          "type": "string",
+          "format": "date"
+        },
+        "imageUrl": {
+          "description": "A relative reference [[RFC3986, Section 4.2]](https://www.rfc-editor.org/rfc/rfc3986#section-4.2) to an image of the movie poster.",
+          "type": "string",
+          "format": "uri-reference"
+        }
+      },
+      "required": ["id", "name", "releaseDate", "imageUrl"],
+      "examples": [
+        {
+          "id": 1,
+          "name": "Cars",
+          "releaseDate": "2006-06-09",
+          "imageUrl": "/images/cars.jpg"
+        }
+      ]
+    },
+    "KaChow": {
+      "title": "KaChow",
+      "description": "An instance where a character said \"Ka-Chow\" in the Cars movie series.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "A unique identifier for the Ka-Chow.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "characterId": {
+          "description": "The identifier of the corresponding character.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "movieId": {
+          "description": "The identifier of the corresponding movie.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "countInMovie": {
+          "description": "The count of the current Ka-Chow within it's corresponding movie.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "videoUrl": {
+          "description": "A relative reference [[RFC3986, Section 4.2]](https://www.rfc-editor.org/rfc/rfc3986#section-4.2) to a video clip of the Ka-Chow.",
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "audioUrl": {
+          "description": "A relative reference to an audio clip of the Ka-Chow.",
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "character": {
+          "description": "The corresponding character, optionally included.",
+          "$ref": "#/$defs/Character"
+        },
+        "movie": {
+          "description": "The corresponding movie, optionally included.",
+          "$ref": "#/$defs/Movie"
+        }
+      },
+      "required": ["id", "characterId", "movieId", "countInMovie", "videoUrl", "audioUrl"],
+      "examples": [
+        {
+          "id": 1,
+          "characterId": 1,
+          "movieId": 1,
+          "countInMovie": 1,
+          "videoUrl": "/videos/ka-chow-01.mp4",
+          "audioUrl": "/audio/ka-chow-01.mp3",
+          "character": {
+            "id": 1,
+            "name": "Lightning McQueen",
+            "actor": "Owen Wilson",
+            "imageUrl": "/images/mcqueen.jpg"
+          },
+          "movie": {
+            "id": 1,
+            "name": "Cars",
+            "releaseDate": "2006-06-09",
+            "imageUrl": "/images/cars.jpg"
+          }
+        }
+      ]
+    },
+    "Collection": {
+      "title": "Collection",
+      "description": "A generic collection. Should be composed together with another schema to specify `properties/results/items`.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The results in the collection.",
+          "type": "array"
+        }
+      },
+      "required": ["results"]
+    },
+    "PaginatedCollection": {
+      "title": "PaginatedCollection",
+      "description": "A generic paginated sollection. Should be composed together with another schema to specify `properties/results/items`.",
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "description": "Pagination information about the results.",
+          "type": "object",
+          "properties": {
+            "offset": {
+              "description": "The offset from the start of the entire collection.",
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "limit": {
+              "description": "The maximum number of results to be returned.",
+              "type": "integer",
+              "minimum": 0,
+              "default": 10
+            },
+            "total": {
+              "description": "The total count of the entire collection, non-paginated.",
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": ["offset", "limit", "total"],
+          "examples": [
+            {
+              "offset": 0,
+              "limit": 1,
+              "total": 1
+            }
+          ]
+        },
+        "results": {
+          "description": "The results in the collection within bounds (offset, offset + limit).",
+          "type": "array"
+        }
+      },
+      "required": ["pagination", "results"]
+    },
+    "ProblemDetail": {
+      "title": "ProblemDetail",
+      "description": "A generic problem detail [[RFC7807]](https://www.rfc-editor.org/rfc/rfc7807). Should be composed together with another schema to specify `properties/type/const`.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "A URI reference [[RFC3986, Section 4.1]](https://www.rfc-editor.org/rfc/rfc3986#section-4.1) that identifies the problem type."
+        },
+        "title": {
+          "type": "string",
+          "description": "A short, human-readable summary of the problem type."
+        },
+        "status": {
+          "type": "number",
+          "description": "The HTTP status code [[RFC7231, Section 6]](https://www.rfc-editor.org/rfc/rfc7231#section-6) generated by the origin server for this occurrence of the problem."
+        },
+        "detail": {
+          "type": "string",
+          "description": "A human-readable explanation specific to this occurrence of the problem. If present, it should focus on helping the client correct the problem."
+        }
+      },
+      "required": ["type"],
+      "examples": [
+        {
+          "type": "https://example.com/probs/out-of-credit",
+          "title": "You do not have enough credit.",
+          "status": 403,
+          "detail": "Your current balance is 30, but that costs 50."
+        }
+      ]
+    },
+    "InvalidInput": {
+      "title": "InvalidInput",
+      "description": "Some of the input provided was invalid.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ProblemDetail"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "https://api.ka-chow.com/v1/problem/InvalidInput"
+        },
+        "status": {
+          "const": 400
+        },
+        "invalidProperties": {
+          "description": "Additional information about the properties which were invalid.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the invalid property.",
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 30
+              },
+              "reason": {
+                "description": "The reason the property is invalid.",
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              }
+            },
+            "required": ["name", "reason"]
+          }
+        }
+      },
+      "required": ["invalidProperties"]
+    },
+    "NotFound": {
+      "title": "NotFound",
+      "description": "The requested resource could not be found.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ProblemDetail"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "https://api.ka-chow.com/v1/problem/NotFound"
+        },
+        "status": {
+          "const": 404
+        }
+      }
+    },
+    "UnknownProblem": {
+      "title": "UnknownProblem",
+      "description": "An unknown problem occurred.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ProblemDetail"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "https://api.ka-chow.com/v1/problem/UnknownProblem"
+        },
+        "status": {
+          "const": 500
+        }
+      }
+    }
+  }
+}

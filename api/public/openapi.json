@@ -1,0 +1,288 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Ka-Chow API",
+    "description": "Ka-Chow (pronounced /kah-'chow/) is the catchphrase of the character Lightning McQueen from the Cars movie series. This REST-ish API is for retrieving Ka-Chows and other related data.",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local Environment"
+    },
+    {
+      "url": "https://api.ka-chow.com/v1",
+      "description": "Production Environment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Character"
+    },
+    {
+      "name": "Movie"
+    },
+    {
+      "name": "KaChow"
+    }
+  ],
+  "paths": {
+    "/characters": {
+      "get": {
+        "operationId": "getCharacters",
+        "description": "Get all characters.",
+        "tags": ["Character"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A collection of characters.",
+                  "allOf": [
+                    {
+                      "$ref": "./schemas.json#/$defs/Collection"
+                    }
+                  ],
+                  "properties": {
+                    "results": {
+                      "items": {
+                        "$ref": "./schemas.json#/$defs/Character"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/UnknownProblem"
+          }
+        }
+      }
+    },
+    "/movies": {
+      "get": {
+        "operationId": "getMovies",
+        "description": "Get all movies.",
+        "tags": ["Movie"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A collection of movies.",
+                  "allOf": [
+                    {
+                      "$ref": "./schemas.json#/$defs/Collection"
+                    }
+                  ],
+                  "properties": {
+                    "results": {
+                      "items": {
+                        "$ref": "./schemas.json#/$defs/Movie"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/UnknownProblem"
+          }
+        }
+      }
+    },
+    "/ka-chows/random": {
+      "get": {
+        "operationId": "getRandomKaChow",
+        "description": "Get a random Ka-Chow. The corresponding character and movie may be included.",
+        "tags": ["KaChow"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/KaChowIncludeQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/KaChow"
+          },
+          "500": {
+            "$ref": "#/components/responses/UnknownProblem"
+          }
+        }
+      }
+    },
+    "/ka-chows/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "$ref": "./schemas.json#/$defs/KaChow/properties/id"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getKaChowById",
+        "description": "Get a specific Ka-Chow by id. The corresponding character and movie may be included.",
+        "tags": ["KaChow"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/KaChowIncludeQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/KaChow"
+          },
+          "400": {
+            "description": "Invalid Input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "./schemas.json#/$defs/InvalidInput"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "./schemas.json#/$defs/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/UnknownProblem"
+          }
+        }
+      }
+    },
+    "/ka-chows": {
+      "get": {
+        "operationId": "getKaChows",
+        "description": "Get a paginated collection of Ka-Chows. Results may be filtered by character name and movie name. The corresponding character and movie may be included.",
+        "tags": ["KaChow"],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "$ref": "./schemas.json#/$defs/PaginatedCollection/properties/pagination/properties/offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "$ref": "./schemas.json#/$defs/PaginatedCollection/properties/pagination/properties/limit"
+            }
+          },
+          {
+            "name": "character",
+            "in": "query",
+            "schema": {
+              "$ref": "./schemas.json#/$defs/Character/properties/name"
+            }
+          },
+          {
+            "name": "movie",
+            "in": "query",
+            "schema": {
+              "$ref": "./schemas.json#/$defs/Movie/properties/name"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/KaChowIncludeQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A paginated collection of Ka-Chows.",
+                  "allOf": [
+                    {
+                      "$ref": "./schemas.json#/$defs/PaginatedCollection"
+                    },
+                    {
+                      "properties": {
+                        "results": {
+                          "items": {
+                            "$ref": "./schemas.json#/$defs/KaChow"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/UnknownProblem"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Character": {
+        "$ref": "./schemas.json#/$defs/Character"
+      },
+      "Movie": {
+        "$ref": "./schemas.json#/$defs/Movie"
+      },
+      "KaChow": {
+        "$ref": "./schemas.json#/$defs/KaChow"
+      }
+    },
+    "parameters": {
+      "KaChowIncludeQuery": {
+        "description": "Sub-resources to include in form style with explode false [[OpenAPI, Section 4.8.12.4]](https://spec.openapis.org/oas/latest.html#style-examples).",
+        "name": "include",
+        "in": "query",
+        "style": "form",
+        "explode": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["character", "movie"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "KaChow": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "./schemas.json#/$defs/KaChow"
+            }
+          }
+        }
+      },
+      "UnknownProblem": {
+        "description": "Unknown Problem",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "./schemas.json#/$defs/UnknownProblem"
+            }
+          }
+        }
+      }
+    }
+  }
+}
