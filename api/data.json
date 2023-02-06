@@ -4,19 +4,19 @@
       "id": 1,
       "name": "Cars",
       "releaseDate": "2006-06-09",
-      "imageURL": "/images/cars.jpg"
+      "imageUrl": "/images/cars.jpg"
     },
     {
       "id": 2,
       "name": "Cars 2",
       "releaseDate": "2011-06-24",
-      "imageURL": "/images/cars2.jpg"
+      "imageUrl": "/images/cars2.jpg"
     },
     {
       "id": 3,
       "name": "Cars 3",
       "releaseDate": "2017-06-16",
-      "imageURL": "/images/cars3.jpg"
+      "imageUrl": "/images/cars3.jpg"
     }
   ],
   "characters": [
@@ -24,31 +24,31 @@
       "id": 1,
       "name": "Lightning McQueen",
       "actor": "Owen Wilson",
-      "imageURL": "/images/mcqueen.jpg"
+      "imageUrl": "/images/mcqueen.jpg"
     },
     {
       "id": 2,
       "name": "Sally Carrera",
       "actor": "Bonny Hunt",
-      "imageURL": "/images/sally.jpg"
+      "imageUrl": "/images/sally.jpg"
     },
     {
       "id": 3,
       "name": "Tow Mater",
       "actor": "Larry the Cable Guy",
-      "imageURL": "/images/mater.jpg"
+      "imageUrl": "/images/mater.jpg"
     },
     {
       "id": 4,
       "name": "Chick Hicks",
       "actor": "Michael Keaton",
-      "imageURL": "/images/chick.jpg"
+      "imageUrl": "/images/chick.jpg"
     },
     {
       "id": 5,
       "name": "Albert Hinkey",
       "actor": "A.J. Riebli III",
-      "imageURL": "/images/albert.jpg"
+      "imageUrl": "/images/albert.jpg"
     }
   ],
   "kaChows": [

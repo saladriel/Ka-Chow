@@ -13,6 +13,12 @@ app.get('/characters', function (reqest, response) {
   });
 });
 
+app.get('/movies', function (reqest, response) {
+  response.send({
+    results: data.movies,
+  });
+});
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}`);
 });
