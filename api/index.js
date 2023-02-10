@@ -33,7 +33,7 @@ app.get('/ka-chows/random', function (request, response) {
     const matchingCharacter = data.characters.find(function (character) {
       return character.id === randomKaChow.characterId;
     });
-    randomKaChow.charater = matchingCharacter;
+    randomKaChow.character = matchingCharacter;
   }
   response.send(randomKaChow);
 });
