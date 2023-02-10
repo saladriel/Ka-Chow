@@ -38,6 +38,17 @@ app.get('/ka-chows/random', function (request, response) {
   response.send(randomKaChow);
 });
 
+app.use(function (error, request, response, next) {
+  console.log(error);
+  response.status(500);
+  response.set('Content-Type', 'application/problem+json');
+  response.send({
+    type: 'https://api.ka-chow.com/v1/problems/UnknownProblem',
+    title: 'An unknown problem occured.',
+    status: 500,
+  });
+});
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}`);
 });
