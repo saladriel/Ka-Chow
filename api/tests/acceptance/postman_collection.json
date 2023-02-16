@@ -1,142 +1,247 @@
 {
-	"info": {
-		"_postman_id": "808d4ca4-7b46-4a33-8cbe-6a9861059143",
-		"name": "Ka-Chow API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Get Charaters",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test('returns status code 200', function () {\r",
-							"  pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test('returns response body with the correct schema', function () {\r",
-							"  pm.response.to.have.jsonSchema({\r",
-							"    type: 'object',\r",
-							"    properties: {\r",
-							"      results: {\r",
-							"        type: 'array',\r",
-							"        items: {\r",
-							"          type: 'object',\r",
-							"          properties: {\r",
-							"            id: {\r",
-							"              type: 'integer',\r",
-							"              minimum: 1,\r",
-							"            },\r",
-							"            name: {\r",
-							"              type: 'string',\r",
-							"              minLength: 1,\r",
-							"              maxLength: 80,\r",
-							"            },\r",
-							"            actor: {\r",
-							"              type: 'string',\r",
-							"              minLength: 1,\r",
-							"              maxLength: 80,\r",
-							"            },\r",
-							"            imageUrl: {\r",
-							"              type: 'string',\r",
-							"              format: 'uri-reference',\r",
-							"            },\r",
-							"          },\r",
-							"          required: ['id', 'name', 'actor', 'imageUrl'],\r",
-							"        },\r",
-							"      },\r",
-							"    },\r",
-							"    required: ['results'],\r",
-							"  });\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/characters",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"characters"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Movies",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test('returns status code 200', function () {\r",
-							"  pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test('returns response body with the correct schema', function () {\r",
-							"  pm.response.to.have.jsonSchema({\r",
-							"    type: 'object',\r",
-							"    properties: {\r",
-							"      results: {\r",
-							"        type: 'array',\r",
-							"        items: {\r",
-							"          type: 'object',\r",
-							"          properties: {\r",
-							"            id: {\r",
-							"              type: 'integer',\r",
-							"              minimum: 1,\r",
-							"            },\r",
-							"            name: {\r",
-							"              type: 'string',\r",
-							"              minLength: 1,\r",
-							"              maxLength: 80,\r",
-							"            },\r",
-							"            releaseDate: {\r",
-							"              type: 'string',\r",
-							"              format: 'date',\r",
-							"            },\r",
-							"            imageUrl: {\r",
-							"              type: 'string',\r",
-							"              format: 'uri-reference',\r",
-							"            },\r",
-							"          },\r",
-							"          required: ['id', 'name', 'releaseDate', 'imageUrl'],\r",
-							"        },\r",
-							"      },\r",
-							"    },\r",
-							"    required: ['results'],\r",
-							"  });\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/movies",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"movies"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "808d4ca4-7b46-4a33-8cbe-6a9861059143",
+    "name": "Ka-Chow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Charaters",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('returns status code 200', function () {\r",
+              "  pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test('returns response body with the correct schema', function () {\r",
+              "  pm.response.to.have.jsonSchema({\r",
+              "    type: 'object',\r",
+              "    properties: {\r",
+              "      results: {\r",
+              "        type: 'array',\r",
+              "        items: {\r",
+              "          type: 'object',\r",
+              "          properties: {\r",
+              "            id: {\r",
+              "              type: 'integer',\r",
+              "              minimum: 1,\r",
+              "            },\r",
+              "            name: {\r",
+              "              type: 'string',\r",
+              "              minLength: 1,\r",
+              "              maxLength: 80,\r",
+              "            },\r",
+              "            actor: {\r",
+              "              type: 'string',\r",
+              "              minLength: 1,\r",
+              "              maxLength: 80,\r",
+              "            },\r",
+              "            imageUrl: {\r",
+              "              type: 'string',\r",
+              "              format: 'uri-reference',\r",
+              "            },\r",
+              "          },\r",
+              "          required: ['id', 'name', 'actor', 'imageUrl'],\r",
+              "        },\r",
+              "      },\r",
+              "    },\r",
+              "    required: ['results'],\r",
+              "  });\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/characters",
+          "host": ["{{baseURL}}"],
+          "path": ["characters"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Movies",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('returns status code 200', function () {\r",
+              "  pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test('returns response body with the correct schema', function () {\r",
+              "  pm.response.to.have.jsonSchema({\r",
+              "    type: 'object',\r",
+              "    properties: {\r",
+              "      results: {\r",
+              "        type: 'array',\r",
+              "        items: {\r",
+              "          type: 'object',\r",
+              "          properties: {\r",
+              "            id: {\r",
+              "              type: 'integer',\r",
+              "              minimum: 1,\r",
+              "            },\r",
+              "            name: {\r",
+              "              type: 'string',\r",
+              "              minLength: 1,\r",
+              "              maxLength: 80,\r",
+              "            },\r",
+              "            releaseDate: {\r",
+              "              type: 'string',\r",
+              "              format: 'date',\r",
+              "            },\r",
+              "            imageUrl: {\r",
+              "              type: 'string',\r",
+              "              format: 'uri-reference',\r",
+              "            },\r",
+              "          },\r",
+              "          required: ['id', 'name', 'releaseDate', 'imageUrl'],\r",
+              "        },\r",
+              "      },\r",
+              "    },\r",
+              "    required: ['results'],\r",
+              "  });\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/movies",
+          "host": ["{{baseURL}}"],
+          "path": ["movies"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Random Ka-Chow",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('returns status code 200', function () {\r",
+              "  pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test('returns response body with the correct schema', function () {\r",
+              "  pm.response.to.have.jsonSchema({\r",
+              "    type: 'object',\r",
+              "    properties: {\r",
+              "      id: {\r",
+              "        type: 'integer',\r",
+              "        minimum: 1,\r",
+              "      },\r",
+              "      characterId: {\r",
+              "        type: 'integer',\r",
+              "        minimum: 1,\r",
+              "      },\r",
+              "      movieId: {\r",
+              "        type: 'integer',\r",
+              "        minimum: 1,\r",
+              "      },\r",
+              "      countInMovie: {\r",
+              "        type: 'integer',\r",
+              "        minimum: 1,\r",
+              "      },\r",
+              "      videoUrl: {\r",
+              "        type: 'string',\r",
+              "        format: 'uri-reference',\r",
+              "      },\r",
+              "      audioUrl: {\r",
+              "        type: 'string',\r",
+              "        format: 'uri-reference',\r",
+              "      },\r",
+              "      character: {\r",
+              "        type: 'object',\r",
+              "        properties: {\r",
+              "          id: {\r",
+              "            type: 'integer',\r",
+              "            minimum: 1,\r",
+              "          },\r",
+              "          name: {\r",
+              "            type: 'string',\r",
+              "            minLength: 1,\r",
+              "            maxLength: 80,\r",
+              "          },\r",
+              "          actor: {\r",
+              "            type: 'string',\r",
+              "            minLength: 1,\r",
+              "            maxLength: 80,\r",
+              "          },\r",
+              "          imageUrl: {\r",
+              "            type: 'string',\r",
+              "            format: 'uri-reference',\r",
+              "          },\r",
+              "        },\r",
+              "        required: ['id', 'name', 'actor', 'imageUrl'],\r",
+              "      },\r",
+              "      movie: {\r",
+              "        type: 'object',\r",
+              "        properties: {\r",
+              "          id: {\r",
+              "            type: 'integer',\r",
+              "            minimum: 1,\r",
+              "          },\r",
+              "          name: {\r",
+              "            type: 'string',\r",
+              "            minLength: 1,\r",
+              "            maxLength: 80,\r",
+              "          },\r",
+              "          releaseDate: {\r",
+              "            type: 'string',\r",
+              "            format: 'date',\r",
+              "          },\r",
+              "          imageUrl: {\r",
+              "            type: 'string',\r",
+              "            format: 'uri-reference',\r",
+              "          },\r",
+              "        },\r",
+              "        required: ['id', 'name', 'releaseDate', 'imageUrl'],\r",
+              "      },\r",
+              "    },\r",
+              "    required: ['id', 'characterId', 'movieId', 'countInMovie', 'videoUrl', 'audioUrl'],\r",
+              "  });\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/ka-chows/random?include=character,movie",
+          "host": ["{{baseURL}}"],
+          "path": ["ka-chows", "random"],
+          "query": [
+            {
+              "key": "include",
+              "value": "character,movie"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }

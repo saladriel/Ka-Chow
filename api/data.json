@@ -57,184 +57,184 @@
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 1,
-      "videoURL": "/videos/ka-chow-01.mp4",
-      "audioURL": "/audio/ka-chow-01.mp3"
+      "videoUrl": "/videos/ka-chow-01.mp4",
+      "audioUrl": "/audio/ka-chow-01.mp3"
     },
     {
       "id": 2,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 2,
-      "videoURL": "/videos/ka-chow-02.mp4",
-      "audioURL": "/audio/ka-chow-02.mp3"
+      "videoUrl": "/videos/ka-chow-02.mp4",
+      "audioUrl": "/audio/ka-chow-02.mp3"
     },
     {
       "id": 3,
       "characterId": 5,
       "movieId": 1,
       "countInMovie": 3,
-      "videoURL": "/videos/ka-chow-03.mp4",
-      "audioURL": "/audio/ka-chow-03.mp3"
+      "videoUrl": "/videos/ka-chow-03.mp4",
+      "audioUrl": "/audio/ka-chow-03.mp3"
     },
     {
       "id": 4,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 4,
-      "videoURL": "/videos/ka-chow-04.mp4",
-      "audioURL": "/audio/ka-chow-04.mp3"
+      "videoUrl": "/videos/ka-chow-04.mp4",
+      "audioUrl": "/audio/ka-chow-04.mp3"
     },
     {
       "id": 5,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 5,
-      "videoURL": "/videos/ka-chow-05.mp4",
-      "audioURL": "/audio/ka-chow-05.mp3"
+      "videoUrl": "/videos/ka-chow-05.mp4",
+      "audioUrl": "/audio/ka-chow-05.mp3"
     },
     {
       "id": 6,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 6,
-      "videoURL": "/videos/ka-chow-06.mp4",
-      "audioURL": "/audio/ka-chow-06.mp3"
+      "videoUrl": "/videos/ka-chow-06.mp4",
+      "audioUrl": "/audio/ka-chow-06.mp3"
     },
     {
       "id": 7,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 7,
-      "videoURL": "/videos/ka-chow-07.mp4",
-      "audioURL": "/audio/ka-chow-07.mp3"
+      "videoUrl": "/videos/ka-chow-07.mp4",
+      "audioUrl": "/audio/ka-chow-07.mp3"
     },
     {
       "id": 8,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 8,
-      "videoURL": "/videos/ka-chow-08.mp4",
-      "audioURL": "/audio/ka-chow-08.mp3"
+      "videoUrl": "/videos/ka-chow-08.mp4",
+      "audioUrl": "/audio/ka-chow-08.mp3"
     },
     {
       "id": 9,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 9,
-      "videoURL": "/videos/ka-chow-09.mp4",
-      "audioURL": "/audio/ka-chow-09.mp3"
+      "videoUrl": "/videos/ka-chow-09.mp4",
+      "audioUrl": "/audio/ka-chow-09.mp3"
     },
     {
       "id": 10,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 10,
-      "videoURL": "/videos/ka-chow-10.mp4",
-      "audioURL": "/audio/ka-chow-10.mp3"
+      "videoUrl": "/videos/ka-chow-10.mp4",
+      "audioUrl": "/audio/ka-chow-10.mp3"
     },
     {
       "id": 11,
       "characterId": 2,
       "movieId": 1,
       "countInMovie": 11,
-      "videoURL": "/videos/ka-chow-11.mp4",
-      "audioURL": "/audio/ka-chow-11.mp3"
+      "videoUrl": "/videos/ka-chow-11.mp4",
+      "audioUrl": "/audio/ka-chow-11.mp3"
     },
     {
       "id": 12,
       "characterId": 1,
       "movieId": 1,
       "countInMovie": 12,
-      "videoURL": "/videos/ka-chow-12.mp4",
-      "audioURL": "/audio/ka-chow-12.mp3"
+      "videoUrl": "/videos/ka-chow-12.mp4",
+      "audioUrl": "/audio/ka-chow-12.mp3"
     },
     {
       "id": 13,
       "characterId": 2,
       "movieId": 1,
       "countInMovie": 13,
-      "videoURL": "/videos/ka-chow-13.mp4",
-      "audioURL": "/audio/ka-chow-13.mp3"
+      "videoUrl": "/videos/ka-chow-13.mp4",
+      "audioUrl": "/audio/ka-chow-13.mp3"
     },
     {
       "id": 14,
       "characterId": 4,
       "movieId": 1,
       "countInMovie": 14,
-      "videoURL": "/videos/ka-chow-14.mp4",
-      "audioURL": "/audio/ka-chow-14.mp3"
+      "videoUrl": "/videos/ka-chow-14.mp4",
+      "audioUrl": "/audio/ka-chow-14.mp3"
     },
     {
       "id": 15,
       "characterId": 4,
       "movieId": 1,
       "countInMovie": 15,
-      "videoURL": "/videos/ka-chow-15.mp4",
-      "audioURL": "/audio/ka-chow-15.mp3"
+      "videoUrl": "/videos/ka-chow-15.mp4",
+      "audioUrl": "/audio/ka-chow-15.mp3"
     },
     {
       "id": 16,
       "characterId": 4,
       "movieId": 1,
       "countInMovie": 16,
-      "videoURL": "/videos/ka-chow-16.mp4",
-      "audioURL": "/audio/ka-chow-16.mp3"
+      "videoUrl": "/videos/ka-chow-16.mp4",
+      "audioUrl": "/audio/ka-chow-16.mp3"
     },
     {
       "id": 17,
       "characterId": 3,
       "movieId": 1,
       "countInMovie": 17,
-      "videoURL": "/videos/ka-chow-17.mp4",
-      "audioURL": "/audio/ka-chow-17.mp3"
+      "videoUrl": "/videos/ka-chow-17.mp4",
+      "audioUrl": "/audio/ka-chow-17.mp3"
     },
     {
       "id": 18,
       "characterId": 4,
       "movieId": 1,
       "countInMovie": 18,
-      "videoURL": "/videos/ka-chow-18.mp4",
-      "audioURL": "/audio/ka-chow-18.mp3"
+      "videoUrl": "/videos/ka-chow-18.mp4",
+      "audioUrl": "/audio/ka-chow-18.mp3"
     },
     {
       "id": 19,
       "characterId": 1,
       "movieId": 2,
       "countInMovie": 1,
-      "videoURL": "/videos/ka-chow-19.mp4",
-      "audioURL": "/audio/ka-chow-19.mp3"
+      "videoUrl": "/videos/ka-chow-19.mp4",
+      "audioUrl": "/audio/ka-chow-19.mp3"
     },
     {
       "id": 20,
       "characterId": 1,
       "movieId": 2,
       "countInMovie": 2,
-      "videoURL": "/videos/ka-chow-20.mp4",
-      "audioURL": "/audio/ka-chow-20.mp3"
+      "videoUrl": "/videos/ka-chow-20.mp4",
+      "audioUrl": "/audio/ka-chow-20.mp3"
     },
     {
       "id": 21,
       "characterId": 1,
       "movieId": 2,
       "countInMovie": 3,
-      "videoURL": "/videos/ka-chow-21.mp4",
-      "audioURL": "/audio/ka-chow-21.mp3"
+      "videoUrl": "/videos/ka-chow-21.mp4",
+      "audioUrl": "/audio/ka-chow-21.mp3"
     },
     {
       "id": 22,
       "characterId": 1,
       "movieId": 2,
       "countInMovie": 4,
-      "videoURL": "/videos/ka-chow-22.mp4",
-      "audioURL": "/audio/ka-chow-22.mp3"
+      "videoUrl": "/videos/ka-chow-22.mp4",
+      "audioUrl": "/audio/ka-chow-22.mp3"
     },
     {
       "id": 23,
       "characterId": 4,
       "movieId": 3,
       "countInMovie": 1,
-      "videoURL": "/videos/ka-chow-23.mp4",
-      "audioURL": "/audio/ka-chow-23.mp3"
+      "videoUrl": "/videos/ka-chow-23.mp4",
+      "audioUrl": "/audio/ka-chow-23.mp3"
     }
   ]
 }
