@@ -1,5 +1,13 @@
 const data = require('./data.json');
 
+exports.getMovies = function () {
+  return { results: data.movies };
+};
+
+exports.getCharacters = function () {
+  return { results: data.characters };
+};
+
 exports.getRandomKaChow = function (include) {
   const randomIndex = Math.floor(Math.random() * data.kaChows.length);
   const randomKaChow = data.kaChows[randomIndex];

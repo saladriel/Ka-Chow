@@ -1,5 +1,55 @@
 const service = require('../../service');
 
+const movieCount = 3;
+const characterCount = 5;
+const kaChowCount = 23;
+const anyMovie = {
+  id: expect.any(Number),
+  name: expect.any(String),
+  releaseDate: expect.any(String),
+  imageUrl: expect.any(String),
+};
+const anyCharacter = {
+  id: expect.any(Number),
+  name: expect.any(String),
+  actor: expect.any(String),
+  imageUrl: expect.any(String),
+};
+const anyKaChow = {
+  id: expect.any(Number),
+  characterId: expect.any(Number),
+  movieId: expect.any(Number),
+  countInMovie: expect.any(Number),
+  videoUrl: expect.any(String),
+  audioUrl: expect.any(String),
+};
+
+describe('getMovies', function () {
+  it('should return all movies', function () {
+    const actual = service.getMovies();
+    const expected = { results: expect.any(Array) };
+
+    expect(actual).toEqual(expected);
+    expect(actual.results.length).toBe(movieCount);
+    actual.results.forEach(function (movie) {
+      expect(movie).toEqual(anyMovie);
+    });
+  });
+});
+
+describe('getCharacters', function () {
+  it('should return all characters', function () {
+    const actual = service.getCharacters();
+    const expected = { results: expect.any(Array) };
+
+    expect(actual).toEqual(expected);
+    expect(actual.results.length).toBe(characterCount);
+    actual.results.forEach(function (character) {
+      expect(character).toEqual(anyCharacter);
+    });
+  });
+});
+
 describe('getRandomKaChow', function () {
   it('should be sufficiently random', function () {
     /**
@@ -7,7 +57,6 @@ describe('getRandomKaChow', function () {
      * relaxed test to check the uniformity of distribution.
      */
     const sampleSize = 230000; // This is arbitrary but should be large enough to prevent flakiness.
-    const kaChowCount = 23;
     const expectedFrequency = sampleSize / kaChowCount;
     const variance = expectedFrequency * 0.1;
     const distribution = {};
@@ -18,22 +67,13 @@ describe('getRandomKaChow', function () {
 
     expect(Object.keys(distribution).length).toBe(kaChowCount);
     Object.values(distribution).forEach((actualFrequency) => {
-      expect(Math.abs(actualFrequency - expectedFrequency)).toBeLessThanOrEqual(
-        variance
-      );
+      expect(Math.abs(actualFrequency - expectedFrequency)).toBeLessThanOrEqual(variance);
     });
   });
 
   it('should return a Ka-Chow with nothing included', function () {
     const actual = service.getRandomKaChow([]);
-    const expected = {
-      id: expect.any(Number),
-      characterId: expect.any(Number),
-      movieId: expect.any(Number),
-      countInMovie: expect.any(Number),
-      videoUrl: expect.any(String),
-      audioUrl: expect.any(String),
-    };
+    const expected = anyKaChow;
 
     expect(actual).toEqual(expected);
   });
@@ -41,18 +81,8 @@ describe('getRandomKaChow', function () {
   it('should return a Ka-Chow with only character included', function () {
     const actual = service.getRandomKaChow(['character']);
     const expected = {
-      id: expect.any(Number),
-      characterId: expect.any(Number),
-      movieId: expect.any(Number),
-      countInMovie: expect.any(Number),
-      videoUrl: expect.any(String),
-      audioUrl: expect.any(String),
-      character: {
-        id: expect.any(Number),
-        name: expect.any(String),
-        actor: expect.any(String),
-        imageUrl: expect.any(String),
-      },
+      ...anyKaChow,
+      character: anyCharacter,
     };
 
     expect(actual).toEqual(expected);
@@ -61,18 +91,8 @@ describe('getRandomKaChow', function () {
   it('should return a Ka-Chow with only movie included', function () {
     const actual = service.getRandomKaChow(['movie']);
     const expected = {
-      id: expect.any(Number),
-      characterId: expect.any(Number),
-      movieId: expect.any(Number),
-      countInMovie: expect.any(Number),
-      videoUrl: expect.any(String),
-      audioUrl: expect.any(String),
-      movie: {
-        id: expect.any(Number),
-        name: expect.any(String),
-        releaseDate: expect.any(String),
-        imageUrl: expect.any(String),
-      },
+      ...anyKaChow,
+      movie: anyMovie,
     };
 
     expect(actual).toEqual(expected);
@@ -81,24 +101,9 @@ describe('getRandomKaChow', function () {
   it('should return a Ka-Chow with character and movie included', function () {
     const actual = service.getRandomKaChow(['character', 'movie']);
     const expected = {
-      id: expect.any(Number),
-      characterId: expect.any(Number),
-      movieId: expect.any(Number),
-      countInMovie: expect.any(Number),
-      videoUrl: expect.any(String),
-      audioUrl: expect.any(String),
-      character: {
-        id: expect.any(Number),
-        name: expect.any(String),
-        actor: expect.any(String),
-        imageUrl: expect.any(String),
-      },
-      movie: {
-        id: expect.any(Number),
-        name: expect.any(String),
-        releaseDate: expect.any(String),
-        imageUrl: expect.any(String),
-      },
+      ...anyKaChow,
+      character: anyCharacter,
+      movie: anyMovie,
     };
 
     expect(actual).toEqual(expected);
