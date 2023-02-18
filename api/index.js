@@ -23,6 +23,12 @@ app.get('/ka-chows/random', function (request, response) {
   response.send(randomKaChow);
 });
 
+app.get('/ka-chows/:id', function (reqest, response) {
+  const id = parseInt(reqest.params.id, 10);
+  const kaChow = service.getKaChowById(id);
+  response.send(kaChow);
+});
+
 app.use(function (error, request, response, next) {
   console.log(error);
   response.status(500);

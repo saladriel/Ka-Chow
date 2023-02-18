@@ -25,3 +25,13 @@ exports.getRandomKaChow = function (include) {
   }
   return randomKaChow;
 };
+
+exports.getKaChowById = function (id) {
+  const foundKaChow = data.kaChows.find(function (kaChow) {
+    return kaChow.id === id;
+  });
+  if (foundKaChow === undefined) {
+    return null;
+  }
+  return foundKaChow;
+};

@@ -109,3 +109,26 @@ describe('getRandomKaChow', function () {
     expect(actual).toEqual(expected);
   });
 });
+
+describe.only('getKaChowById', function () {
+  it('should return null if Ka-Chow is not found', function () {
+    const actual = service.getKaChowById(0);
+    const expected = null;
+
+    expect(actual).toBe(expected);
+  });
+
+  it('should return a Ka-Chow by Id with nothing included', function () {
+    const actual = service.getKaChowById(1);
+    const expected = {
+      id: 1,
+      characterId: 1,
+      movieId: 1,
+      countInMovie: 1,
+      videoUrl: '/videos/ka-chow-01.mp4',
+      audioUrl: '/audio/ka-chow-01.mp3',
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
