@@ -110,7 +110,7 @@ describe('getRandomKaChow', function () {
   });
 });
 
-describe.only('getKaChowById', function () {
+describe('getKaChowById', function () {
   const kaChow1 = {
     id: 1,
     characterId: 1,

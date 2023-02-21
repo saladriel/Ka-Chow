@@ -10,20 +10,8 @@ exports.getCharacters = function () {
 
 exports.getRandomKaChow = function (include) {
   const randomIndex = Math.floor(Math.random() * data.kaChows.length);
-  const randomKaChow = { ...data.kaChows[randomIndex] };
-  if (include.includes('movie')) {
-    const matchingMovie = data.movies.find(function (movie) {
-      return movie.id === randomKaChow.movieId;
-    });
-    randomKaChow.movie = matchingMovie;
-  }
-  if (include.includes('character')) {
-    const matchingCharacter = data.characters.find(function (character) {
-      return character.id === randomKaChow.characterId;
-    });
-    randomKaChow.character = matchingCharacter;
-  }
-  return randomKaChow;
+  const randomKaChow = data.kaChows[randomIndex];
+  return withIncluded(include, randomKaChow);
 };
 
 exports.getKaChowById = function (id, include) {
@@ -33,18 +21,22 @@ exports.getKaChowById = function (id, include) {
   if (foundKaChow === undefined) {
     return null;
   }
-  foundKaChow = { ...foundKaChow };
+  return withIncluded(include, foundKaChow);
+};
+
+function withIncluded(include, kaChow) {
+  const kaChowWithIncluded = { ...kaChow };
   if (include.includes('movie')) {
     const matchingMovie = data.movies.find(function (movie) {
-      return movie.id === foundKaChow.movieId;
+      return movie.id === kaChowWithIncluded.movieId;
     });
-    foundKaChow.movie = matchingMovie;
+    kaChowWithIncluded.movie = matchingMovie;
   }
   if (include.includes('character')) {
     const matchingCharacter = data.characters.find(function (character) {
-      return character.id === foundKaChow.characterId;
+      return character.id === kaChowWithIncluded.characterId;
     });
-    foundKaChow.character = matchingCharacter;
+    kaChowWithIncluded.character = matchingCharacter;
   }
-  return foundKaChow;
-};
+  return kaChowWithIncluded;
+}
