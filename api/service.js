@@ -10,7 +10,7 @@ exports.getCharacters = function () {
 
 exports.getRandomKaChow = function (include) {
   const randomIndex = Math.floor(Math.random() * data.kaChows.length);
-  const randomKaChow = data.kaChows[randomIndex];
+  const randomKaChow = { ...data.kaChows[randomIndex] };
   if (include.includes('movie')) {
     const matchingMovie = data.movies.find(function (movie) {
       return movie.id === randomKaChow.movieId;
@@ -26,12 +26,25 @@ exports.getRandomKaChow = function (include) {
   return randomKaChow;
 };
 
-exports.getKaChowById = function (id) {
-  const foundKaChow = data.kaChows.find(function (kaChow) {
+exports.getKaChowById = function (id, include) {
+  let foundKaChow = data.kaChows.find(function (kaChow) {
     return kaChow.id === id;
   });
   if (foundKaChow === undefined) {
     return null;
+  }
+  foundKaChow = { ...foundKaChow };
+  if (include.includes('movie')) {
+    const matchingMovie = data.movies.find(function (movie) {
+      return movie.id === foundKaChow.movieId;
+    });
+    foundKaChow.movie = matchingMovie;
+  }
+  if (include.includes('character')) {
+    const matchingCharacter = data.characters.find(function (character) {
+      return character.id === foundKaChow.characterId;
+    });
+    foundKaChow.character = matchingCharacter;
   }
   return foundKaChow;
 };

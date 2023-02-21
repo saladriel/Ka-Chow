@@ -12,7 +12,7 @@ app.get('/characters', function (reqest, response) {
   response.send(characters);
 });
 
-app.get('/movies', function (reqest, response) {
+app.get('/movies', function (request, response) {
   const movies = service.getMovies();
   response.send(movies);
 });
@@ -23,9 +23,10 @@ app.get('/ka-chows/random', function (request, response) {
   response.send(randomKaChow);
 });
 
-app.get('/ka-chows/:id', function (reqest, response) {
-  const id = parseInt(reqest.params.id, 10);
-  const kaChow = service.getKaChowById(id);
+app.get('/ka-chows/:id', function (request, response) {
+  const id = parseInt(request.params.id, 10);
+  const include = (request.query.include || '').split(',');
+  const kaChow = service.getKaChowById(id, include);
   response.send(kaChow);
 });
 
