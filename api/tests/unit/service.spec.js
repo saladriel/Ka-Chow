@@ -109,3 +109,71 @@ describe('getRandomKaChow', function () {
     expect(actual).toEqual(expected);
   });
 });
+
+describe('getKaChowById', function () {
+  const kaChow1 = {
+    id: 1,
+    characterId: 1,
+    movieId: 1,
+    countInMovie: 1,
+    videoUrl: '/videos/ka-chow-01.mp4',
+    audioUrl: '/audio/ka-chow-01.mp3',
+  };
+  const movie1 = {
+    id: 1,
+    name: 'Cars',
+    releaseDate: '2006-06-09',
+    imageUrl: '/images/cars.jpg',
+  };
+  const character1 = {
+    id: 1,
+    name: 'Lightning McQueen',
+    actor: 'Owen Wilson',
+    imageUrl: '/images/mcqueen.jpg',
+  };
+
+  it('should return null if Ka-Chow is not found', function () {
+    const actual = service.getKaChowById(24, []);
+    const expected = null;
+
+    expect(actual).toBe(expected);
+  });
+
+  it('should return a Ka-Chow by Id with nothing included', function () {
+    const actual = service.getKaChowById(1, []);
+    const expected = kaChow1;
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should return a Ka-Chow by Id with only character included', function () {
+    const actual = service.getKaChowById(1, ['character']);
+    const expected = {
+      ...kaChow1,
+      character: character1,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should return a Ka-Chow by Id with only movie included', function () {
+    const actual = service.getKaChowById(1, ['movie']);
+    const expected = {
+      ...kaChow1,
+      movie: movie1,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should return a Ka-Chow by Id with character and movie included', function () {
+    const actual = service.getKaChowById(1, ['character', 'movie']);
+    const expected = {
+      ...kaChow1,
+      character: character1,
+      movie: movie1,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
