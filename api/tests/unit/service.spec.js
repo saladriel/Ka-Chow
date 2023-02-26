@@ -133,7 +133,7 @@ describe('getKaChowById', function () {
   };
 
   it('should return null if Ka-Chow is not found', function () {
-    const actual = service.getKaChowById(0, []);
+    const actual = service.getKaChowById(24, []);
     const expected = null;
 
     expect(actual).toBe(expected);

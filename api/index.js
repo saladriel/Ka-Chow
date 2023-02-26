@@ -25,8 +25,28 @@ app.get('/ka-chows/random', function (request, response) {
 
 app.get('/ka-chows/:id', function (request, response) {
   const id = parseInt(request.params.id, 10);
+  if (Number.isNaN(id) || id < 1) {
+    response.status(400);
+    response.set('Content-Type', 'application/problem+json');
+    response.send({
+      type: 'https://api.ka-chow.com/v1/problem/InvalidInput',
+      title: 'Some of the input provided was invalid.',
+      status: 400,
+    });
+    return;
+  }
   const include = (request.query.include || '').split(',');
   const kaChow = service.getKaChowById(id, include);
+  if (kaChow === null) {
+    response.status(404);
+    response.set('Content-Type', 'application/problem+json');
+    response.send({
+      type: 'https://api.ka-chow.com/v1/problem/NotFound',
+      title: 'The requested resource could not be found.',
+      status: 404,
+    });
+    return;
+  }
   response.send(kaChow);
 });
 
