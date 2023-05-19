@@ -8,7 +8,8 @@
     "start": "node source/index.js",
     "dev": "nodemon",
     "contract-test": "newman run tests/contract/postman_collection.json --environment tests/contract/postman_environment.json",
-    "unit-test": "jest"
+    "unit-test": "jest ./unit --coverage --collectCoverageFrom=./source/service.js",
+    "integration-test": "jest ./integration"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "jest": "^29.3.1",
     "newman": "^5.3.2",
     "nodemon": "^2.0.20",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "supertest": "^6.3.3"
   }
 }
