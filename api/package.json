@@ -1,7 +1,7 @@
 {
-  "name": "ka-chow",
+  "name": "ka-chow-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A REST-ish API for retrieving Ka-Chows and related data about the Pixar Cars movies.",
   "main": "source/index.js",
   "scripts": {
     "format": "prettier --write .",
@@ -15,7 +15,13 @@
     "type": "git",
     "url": "git+https://github.com/saladriel/Ka-Chow.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Ka-Chow",
+    "Kachow",
+    "Cars",
+    "Pixar",
+    "API"
+  ],
   "author": "@saladirel",
   "license": "ISC",
   "bugs": {
