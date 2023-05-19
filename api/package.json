@@ -2,10 +2,10 @@
   "name": "ka-chow",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "source/index.js",
   "scripts": {
     "format": "prettier --write .",
-    "start": "node index.js",
+    "start": "node source/index.js",
     "dev": "nodemon",
     "acceptance-test": "newman run tests/acceptance/postman_collection.json --environment tests/acceptance/postman_environment.json",
     "unit-test": "jest"

@@ -1,4 +1,4 @@
-const data = require('./data.json');
+const data = require('../data.json');
 
 exports.getMovies = function () {
   return { results: data.movies };

@@ -1,4 +1,4 @@
-const service = require('../../service');
+const service = require('../../source/service');
 
 const movieCount = 3;
 const characterCount = 5;
