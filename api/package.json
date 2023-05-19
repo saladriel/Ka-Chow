@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "start": "node source/index.js",
     "dev": "nodemon",
-    "acceptance-test": "newman run tests/acceptance/postman_collection.json --environment tests/acceptance/postman_environment.json",
+    "contract-test": "newman run tests/contract/postman_collection.json --environment tests/contract/postman_environment.json",
     "unit-test": "jest"
   },
   "repository": {
