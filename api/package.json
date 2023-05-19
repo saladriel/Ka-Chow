@@ -6,10 +6,11 @@
   "scripts": {
     "format": "prettier --write .",
     "start": "node source/index.js",
-    "dev": "nodemon",
-    "contract-test": "newman run tests/contract/postman_collection.json --environment tests/contract/postman_environment.json",
+    "start-watch": "nodemon",
     "unit-test": "jest ./unit --coverage --collectCoverageFrom=./source/service.js",
-    "integration-test": "jest ./integration"
+    "unit-test-watch": "npm run unit-test -- --watch",
+    "integration-test": "jest ./integration",
+    "contract-test": "newman run tests/contract/postman_collection.json --environment tests/contract/postman_environment.json"
   },
   "repository": {
     "type": "git",
