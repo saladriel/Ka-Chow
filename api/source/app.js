@@ -4,7 +4,6 @@ const service = require('./service');
 const problems = require('./problems');
 
 const app = express();
-const port = 3000;
 
 app.use(express.static(path.join(__dirname, './public')));
 
@@ -49,6 +48,4 @@ app.use(function (error, request, response, next) {
   response.send(problems.unknownProblem);
 });
 
-app.listen(port, function () {
-  console.log(`Example app listening on port ${port}`);
-});
+module.exports = app;

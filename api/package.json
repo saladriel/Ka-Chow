@@ -1,19 +1,28 @@
 {
-  "name": "ka-chow",
+  "name": "ka-chow-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A REST-ish API for retrieving Ka-Chows and related data about the Pixar Cars movies.",
+  "main": "source/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon",
-    "acceptance-test": "newman run tests/acceptance/postman_collection.json --environment tests/acceptance/postman_environment.json",
-    "unit-test": "jest"
+    "format": "prettier --write .",
+    "start": "node source/index.js",
+    "start-watch": "nodemon",
+    "unit-test": "jest ./unit --coverage --collectCoverageFrom=./source/service.js",
+    "unit-test-watch": "npm run unit-test -- --watch",
+    "integration-test": "jest ./integration",
+    "contract-test": "newman run tests/contract/postman_collection.json --environment tests/contract/postman_environment.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saladriel/Ka-Chow.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Ka-Chow",
+    "Kachow",
+    "Cars",
+    "Pixar",
+    "API"
+  ],
   "author": "@saladirel",
   "license": "ISC",
   "bugs": {
@@ -26,6 +35,8 @@
   "devDependencies": {
     "jest": "^29.3.1",
     "newman": "^5.3.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.8",
+    "supertest": "^6.3.3"
   }
 }

@@ -22,10 +22,10 @@
        * Unfortunately Stoplight Elements markup makes it difficult (impossible?) to do this with pure CSS.
        */
       const observer = new MutationObserver(() => {
-        const selector = ".JsonSchemaViewer .sl-stack.sl-stack--horizontal.sl-stack--2";
+        const selector = '.JsonSchemaViewer .sl-stack.sl-stack--horizontal.sl-stack--2';
         document.querySelectorAll(selector).forEach((element) => {
-          if (element.textContent.startsWith("Example:")) {
-            element.style.display = "none";
+          if (element.textContent.startsWith('Example:')) {
+            element.style.display = 'none';
           }
         });
       });
